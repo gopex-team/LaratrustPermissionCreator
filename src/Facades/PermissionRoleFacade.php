@@ -21,6 +21,10 @@ class PermissionRoleFacade
             $ret = array_merge_recursive($ret , $data);
         }
 
+        if (! isset($ret['roles'])) $ret['roles'] = [];
+        if (! isset($ret['permissions'])) $ret['permissions'] = [];
+        if (! isset($ret['rolesPermissions'])) $ret['rolesPermissions'] = [];
+
         return $ret;
     }
 
