@@ -1,0 +1,30 @@
+{
+    "name": "gopex/laratrust-permission-creator",
+    "license": "GPL3",
+    "autoload": {
+        "psr-4": {
+            "Gopex\\LaratrustPermissionCreator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mohammad Foroughi",
+            "email": "foroughi1380@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gopex\\LaratrustPermissionCreator\\providers\\LaratrustPermissionCreatorServiceProvider"
+            ]
+        }
+    },
+
+    "scripts": {
+        "post-autoload-dump": [
+            "@php artisan vendor:publish --tag='laratrust-permissions-file'"
+        ]
+    },
+
+    "require": {}
+}
