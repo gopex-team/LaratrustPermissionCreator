@@ -105,7 +105,7 @@ class FromConfig extends Command
     private function ConvertToTuple($array){
         $ret = [];
         foreach ($array as $key => $value){
-            foreach ($value as $v){
+            foreach (array_unique($value) as $v){
                 $ret[] = [
                     config('laratrust.foreign_keys.role') => $key,
                     config('laratrust.foreign_keys.permission') => $v
