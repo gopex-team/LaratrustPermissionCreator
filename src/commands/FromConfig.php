@@ -61,14 +61,25 @@ class FromConfig extends Command
     }
 
 
+    private function selectLast($a){
+        if(is_array($a)){
+            return $a[count($a) - 1];
+        }
+        return $a;
+    }
+
     private function makeForCreate($array){
         $ret = [];
         $time = now()->toAtomString();
+        $display_name = $this->selectLast($value['display_name'] ?? '');
+        $description = $this->selectLast($value['description'] ?? '');
+
+
         foreach ($array as $key => $value){
             $ret[] = [
               "name" => $key,
-              "display_name" => $value['display_name'] ?? '',
-              'description' => $value['description'] ?? '',
+              "display_name" => $display_name,
+              'description' => $description,
               'created_at' => $time,
               'updated_at' => $time,
             ];
