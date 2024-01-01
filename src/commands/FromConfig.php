@@ -20,8 +20,9 @@ class FromConfig extends Command
 
             foreach ($keys as $key){
                 try {
-                    $one = is_array($value[$key]) ? $value[$key][0] : $value[$key];
-                    $two = is_array($array2[$index][$key]) ? $array2[$index][$key][0] : $array2[$index][$key];
+                    $one = $this->selectLast($value[$key] ?? '');
+                    $two = $this->selectLast($array2[$index][$key] ?? '');
+
                     $isDifferent = $isDifferent || $one != $two;
                 }catch (\Exception $e){}
             }
@@ -71,11 +72,11 @@ class FromConfig extends Command
     private function makeForCreate($array){
         $ret = [];
         $time = now()->toAtomString();
-        $display_name = $this->selectLast($value['display_name'] ?? '');
-        $description = $this->selectLast($value['description'] ?? '');
-
 
         foreach ($array as $key => $value){
+            $display_name = $this->selectLast($value['display_name'] ?? '');
+            $description = $this->selectLast($value['description'] ?? '');
+
             $ret[] = [
               "name" => $key,
               "display_name" => $display_name,
@@ -190,12 +191,12 @@ class FromConfig extends Command
         DB::table(config('laratrust.tables.permissions'))->whereIn('id' , $deletePermissions)->delete();
         DB::table(config('laratrust.tables.roles'))->whereIn('id' , $deleteRole)->delete();
 
-        echo "Permission Count\n";
+        echo "[--- Permission Count ---]\n";
         echo "created : " . count($newPermissions);
         echo "\nupdated : " . count($updatePermission);
         echo "\ndeleted : " . count($deletePermissions);
 
-        echo "\n\nRole Count\n";
+        echo "\n\n[--- Role Count ---]\n";
         echo "created : " . count($newRole);
         echo "\nupdated : " . count($updateRole);
         echo "\ndeleted : " . count($deleteRole);
