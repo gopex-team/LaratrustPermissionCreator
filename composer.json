@@ -1,6 +1,6 @@
 {
     "name": "gopex/laratrust-permission-creator",
-    "license": "GPL3",
+    "license": "GPL-3.0-or-later",
     "autoload": {
         "psr-4": {
             "Gopex\\LaratrustPermissionCreator\\": "src/"
