@@ -71,7 +71,7 @@ class FromConfig extends Command
 
     private function makeForCreate($array){
         $ret = [];
-        $time = now()->toAtomString();
+        $time = now();
 
         foreach ($array as $key => $value){
             $display_name = $this->selectLast($value['display_name'] ?? '');
