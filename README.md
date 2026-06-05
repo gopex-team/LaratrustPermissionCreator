@@ -7,7 +7,7 @@ LaratrustPermissionCreator is a Laravel package that facilitates the management 
 Install the package using Composer:
 
 ```bash
-composer require your-vendor/laratrust-permission-creator
+composer require gopex/laratrust-permission-creator
 ```
 
 Once installed, run the migrations to set up the necessary database tables:
